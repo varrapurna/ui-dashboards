@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+  // State to track which page we're on
+  const [currentPage, setCurrentPage] = useState('cards1');
+
   // Hard-coded data as specified in requirements
   const cardsData = [
     {
@@ -34,14 +37,12 @@ function App() {
     });
   };
 
-  return (
-    <div style={{ 
-      backgroundColor: '#ffffff',
-      minHeight: '100vh',
+  // Cards 1 component - Same as Step 1
+  const Cards1 = () => (
+    <div style={{
       padding: '60px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+      backgroundColor: '#ffffff'
     }}>
-      {/* Main content area */}
       <div style={{
         maxWidth: '800px',
         margin: '0 auto'
@@ -58,9 +59,7 @@ function App() {
         }}>
           
           {/* Card 1 - Top Left */}
-          <div style={{
-            textAlign: 'left'
-          }}>
+          <div style={{ textAlign: 'left' }}>
             <div style={{
               fontSize: '48px',
               fontWeight: '600',
@@ -88,9 +87,7 @@ function App() {
           </div>
 
           {/* Card 2 - Top Right */}
-          <div style={{
-            textAlign: 'left'
-          }}>
+          <div style={{ textAlign: 'left' }}>
             <div style={{
               fontSize: '48px',
               fontWeight: '600',
@@ -118,9 +115,7 @@ function App() {
           </div>
 
           {/* Card 3 - Bottom Left */}
-          <div style={{
-            textAlign: 'left'
-          }}>
+          <div style={{ textAlign: 'left' }}>
             <div style={{
               fontSize: '48px',
               fontWeight: '600',
@@ -148,9 +143,7 @@ function App() {
           </div>
 
           {/* Card 4 - Bottom Right */}
-          <div style={{
-            textAlign: 'left'
-          }}>
+          <div style={{ textAlign: 'left' }}>
             <div style={{
               fontSize: '48px',
               fontWeight: '600',
@@ -177,6 +170,86 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+
+  // Cards 2 component - Empty for now (as per Step 2 requirement)
+  const Cards2 = () => (
+    <div style={{
+      padding: '60px',
+      backgroundColor: '#ffffff',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '400px'
+    }}>
+      <div style={{
+        textAlign: 'center',
+        color: '#999999',
+        fontSize: '16px'
+      }}>
+        Cards 2 - Will be implemented in Step 3
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ 
+      display: 'flex',
+      backgroundColor: '#ffffff',
+      minHeight: '100vh',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    }}>
+      
+      {/* Sidebar - Matching Step 2 Figma design */}
+      <div style={{
+        width: '200px',
+        backgroundColor: '#ffffff',
+        borderRight: '1px solid #e0e0e0',
+        minHeight: '100vh'
+      }}>
+        
+        {/* Navigation Menu */}
+        <nav style={{ padding: '20px 0' }}>
+          <div
+            onClick={() => setCurrentPage('cards1')}
+            style={{
+              padding: '12px 20px',
+              cursor: 'pointer',
+              backgroundColor: currentPage === 'cards1' ? '#f5f5f5' : 'transparent',
+              color: currentPage === 'cards1' ? '#000000' : '#666666',
+              fontSize: '14px',
+              fontWeight: '400',
+              borderLeft: currentPage === 'cards1' ? '3px solid #333' : '3px solid transparent'
+            }}
+          >
+            Cards 1
+          </div>
+          
+          <div
+            onClick={() => setCurrentPage('cards2')}
+            style={{
+              padding: '12px 20px',
+              cursor: 'pointer',
+              backgroundColor: currentPage === 'cards2' ? '#f5f5f5' : 'transparent',
+              color: currentPage === 'cards2' ? '#000000' : '#666666',
+              fontSize: '14px',
+              fontWeight: '400',
+              borderLeft: currentPage === 'cards2' ? '3px solid #333' : '3px solid transparent'
+            }}
+          >
+            Cards 2
+          </div>
+        </nav>
+      </div>
+
+      {/* Main Content Area */}
+      <div style={{
+        flex: 1,
+        backgroundColor: '#ffffff'
+      }}>
+        {currentPage === 'cards1' ? <Cards1 /> : <Cards2 />}
       </div>
     </div>
   );
