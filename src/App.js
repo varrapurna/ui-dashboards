@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Cards2 from './Cards2';
 import Cards4 from './Cards4';
 import Cards5 from './Cards5'; // Import Cards5 component
+import Cards6 from './Cards6'; // Import Cards6 component
 
 function App() {
   // State to track which page we're on
@@ -245,7 +246,21 @@ function App() {
               borderLeft: currentPage === 'cards5' ? '3px solid #333' : '3px solid transparent'
             }}
           >
-            Table
+            Table 1
+          </div>
+          <div
+            onClick={() => setCurrentPage('cards6')}
+            style={{
+              padding: '12px 20px',
+              cursor: 'pointer',
+              backgroundColor: currentPage === 'cards6' ? '#f5f5f5' : 'transparent',
+              color: currentPage === 'cards6' ? '#000000' : '#666666',
+              fontSize: '14px',
+              fontWeight: '400',
+              borderLeft: currentPage === 'cards6' ? '3px solid #333' : '3px solid transparent'
+            }}
+          >
+            Table 2
           </div>
         </nav>
       </div>
@@ -263,6 +278,8 @@ function App() {
           <Cards4 />
         ) : currentPage === 'cards5' ? (
           <Cards5 />
+        ) : currentPage === 'cards6' ? (
+          <Cards6 />
         ) : (
           <Cards1 />
         )}
