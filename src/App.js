@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Cards2 from './Cards2';
 function App() {
   // State to track which page we're on
   const [currentPage, setCurrentPage] = useState('cards1');
@@ -170,26 +170,6 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-
-  // Cards 2 component - Empty for now (as per Step 2 requirement)
-  const Cards2 = () => (
-    <div style={{
-      padding: '60px',
-      backgroundColor: '#ffffff',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '400px'
-    }}>
-      <div style={{
-        textAlign: 'center',
-        color: '#999999',
-        fontSize: '16px'
-      }}>
-        Cards 2 - Will be implemented in Step 3
       </div>
     </div>
   );
