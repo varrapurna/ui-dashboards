@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Cards2 from './Cards2';
+import Cards4 from './Cards4';
+import Cards5 from './Cards5'; // Import Cards5 component
+
 function App() {
   // State to track which page we're on
   const [currentPage, setCurrentPage] = useState('cards1');
@@ -47,7 +50,6 @@ function App() {
         maxWidth: '800px',
         margin: '0 auto'
       }}>
-        
         {/* Cards Grid - 2x2 layout exactly like Figma */}
         <div style={{
           display: 'grid',
@@ -57,7 +59,6 @@ function App() {
           width: '100%',
           maxWidth: '600px'
         }}>
-          
           {/* Card 1 - Top Left */}
           <div style={{ textAlign: 'left' }}>
             <div style={{
@@ -181,7 +182,6 @@ function App() {
       minHeight: '100vh',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     }}>
-      
       {/* Sidebar - Matching Step 2 Figma design */}
       <div style={{
         width: '200px',
@@ -189,7 +189,6 @@ function App() {
         borderRight: '1px solid #e0e0e0',
         minHeight: '100vh'
       }}>
-        
         {/* Navigation Menu */}
         <nav style={{ padding: '20px 0' }}>
           <div
@@ -206,7 +205,6 @@ function App() {
           >
             Cards 1
           </div>
-          
           <div
             onClick={() => setCurrentPage('cards2')}
             style={{
@@ -221,6 +219,34 @@ function App() {
           >
             Cards 2
           </div>
+          <div
+            onClick={() => setCurrentPage('cards4')}
+            style={{
+              padding: '12px 20px',
+              cursor: 'pointer',
+              backgroundColor: currentPage === 'cards4' ? '#f5f5f5' : 'transparent',
+              color: currentPage === 'cards4' ? '#000000' : '#666666',
+              fontSize: '14px',
+              fontWeight: '400',
+              borderLeft: currentPage === 'cards4' ? '3px solid #333' : '3px solid transparent'
+            }}
+          >
+            Charts
+          </div>
+          <div
+            onClick={() => setCurrentPage('cards5')}
+            style={{
+              padding: '12px 20px',
+              cursor: 'pointer',
+              backgroundColor: currentPage === 'cards5' ? '#f5f5f5' : 'transparent',
+              color: currentPage === 'cards5' ? '#000000' : '#666666',
+              fontSize: '14px',
+              fontWeight: '400',
+              borderLeft: currentPage === 'cards5' ? '3px solid #333' : '3px solid transparent'
+            }}
+          >
+            Table
+          </div>
         </nav>
       </div>
 
@@ -229,7 +255,17 @@ function App() {
         flex: 1,
         backgroundColor: '#ffffff'
       }}>
-        {currentPage === 'cards1' ? <Cards1 /> : <Cards2 />}
+        {currentPage === 'cards1' ? (
+          <Cards1 />
+        ) : currentPage === 'cards2' ? (
+          <Cards2 />
+        ) : currentPage === 'cards4' ? (
+          <Cards4 />
+        ) : currentPage === 'cards5' ? (
+          <Cards5 />
+        ) : (
+          <Cards1 />
+        )}
       </div>
     </div>
   );
